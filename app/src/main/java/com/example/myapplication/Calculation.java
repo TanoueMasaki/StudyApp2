@@ -1,11 +1,27 @@
 package com.example.myapplication;
 
+import java.util.ArrayList;
+
 public class Calculation {
 
-    public int leftValue;
-    public int rightValue;
-    public int answer;
-    public String ope;
+    private int leftValue;
+    private int rightValue;
+    private int answer;
+    private String ope;
+    
+    //ゲッター
+    public int getLeftValue() {
+    	return this.leftValue;
+    }
+    public int getRightValue() {
+    	return this.rightValue;
+    }
+    public int getAnswer() {
+    	return this.answer;
+    }
+    public String getOpe() {
+    	return this.ope;
+    }
 
 //列挙型で演算子を限定する
     public enum Operator {
@@ -35,22 +51,19 @@ public class Calculation {
                 break;
         }
     }
-
-
-    public int leftValueSet(int l){
+    //引数（初期値から最終値）までが入った配列ArrayList型arrayを作成して返す
+    public ArrayList<Integer> arraySet(int initialVal,int finalVal) {
+    	
+    	ArrayList<Integer> array = new ArrayList<>();
+    	for(int i = initialVal;i <= finalVal;i++) {
+    		array.add(i);
+    	}
+		return array;
+	}
+    public void leftValueSet(int l){
         this.leftValue = l;
-        return this.leftValue;
     }
-
-    public int rightValueSet(int r){
+    public void rightValueSet(int r){
         this.rightValue = r;
-        return this.rightValue;
     }
-
-    //足し算
-    public int addition(){
-        this.answer = leftValue+rightValue;
-        return this.answer;
-    }
-
 }
