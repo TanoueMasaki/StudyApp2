@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    CalcPage calcPage = new CalcPage();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         Button button = findViewById(R.id.button);
-//        リスナーを定義する
+        //リスナーを定義する
         button.setOnClickListener(new View.OnClickListener() {
-            //        リスナーの中身
             @Override
             public void onClick(View view) {
                 Log.d("MainActivity","Clicked!");
@@ -44,15 +45,14 @@ public class MainActivity extends AppCompatActivity {
                 doroid.setText(editText2);
             }
         });
-        /*画面を遷移させる*/
+        // 足し算ボタン
         Button button2 = findViewById(R.id.button2);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent(MainActivity.this,CalcPage.class);
                 startActivity(intent);
-
+                calcPage.setOpe(1);
             }
         });
     }

@@ -10,23 +10,47 @@ import android.widget.EditText;
 import android.widget.TextView;
 //import com.example.study.Calculation.*;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class CalcPage extends AppCompatActivity {
-
-    int l =1;
-    int r =1;
-
     //インスタンス化する
     Calculation calc = new Calculation();
+    SetCalc setCalc = new SetCalc();
+
+    //数値の範囲を決定する
+    //初期値から最終値までをarraySetに引数として渡す
+    //引数はユーザーが決めれるようにする
+    ArrayList<Integer> array = setCalc.arraySet(1,3);
+
+    //解答結果を入れる配列を用意する
+    String[][] result = new String[5][array.size() * array.size()];
+
+    //演算選択に必要
+    private int ope = 0;
+    public void setOpe(int ope){
+        this.ope = ope;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calc_page);
 
-        leftValue(l);
-        rightValue(r);
+        switch(ope) {
+            case 1:
+                result = calc.calcDecision(array, SetCalc.Operator.addition);
+                break;
+            case 2:
+                result = calc.calcDecision(array, SetCalc.Operator.subtraction);
+                break;
+            case 3:
+                result = calc.calcDecision(array, SetCalc.Operator.multiplication);
+                break;
+            case 4:
+                result = calc.calcDecision(array, SetCalc.Operator.division);
+                break;
+        }
 
         /*判定ボタン*/
         Button hantei1 = findViewById(R.id.hantei1);
