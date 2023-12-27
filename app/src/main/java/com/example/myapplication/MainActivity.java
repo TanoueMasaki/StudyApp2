@@ -1,54 +1,62 @@
 package com.example.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
+import java.awt.Button;
+import java.awt.Color;
+
+import javax.swing.text.View;
+
+import com.example.myapplication.Calculation.Operator;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
     //フィールド定義
     int initialVal = 0;
     int finalVal = 0;
-    int ope = 0;
+    Operator ope;
 
+    //セッター
     public void setInitialVal(int value){
         this.initialVal = value;
     }
     public void setFinalVal(int value){
         this.finalVal = value;
     }
+    public void setOpe(Operator ope){
+        this.ope = ope;
+    }
+    //ゲッター
+    public int getInitialVal() {
+		return this.initialVal;
+	}
+    public int getFinalVal() {
+		return this.finalVal;
+	}
+    public Operator getOpe() {
+		return this.ope;
+	}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         //たし算ボタンが押されたら
         Button buAddition = findViewById(R.id.buAddition);
         buAddition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //文字カラーを変更する
-                //doroid.setTextColor(Color.parseColor("#FF0000"));
-                //文字フォントを変更する
-                //doroid.setTypeface(Typeface.DEFAULT_BOLD);
-                //エディットテキストを取得する
-
-                //エディットテキスト内のテキストを取得して文字列型に変換、変数に代入する
-                //String editText2 = editText.getText().toString();
-
+            	this.ope = addition;
+                buAddition.setBackgroundColor(Color.parseColor("#FF0000"));
             }
         });
+        
+        //ひき算ボタンが押されたら
+        //かけ算ボタンが押されたら
+        //わり算ボタンが押されたら
 
         //スタートボタンが押されたら
         Button buStart = findViewById(R.id.buStart);
