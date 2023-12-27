@@ -1,16 +1,14 @@
 package com.example.myapplication;
-import java.awt.Button;
+
 import java.util.ArrayList;
-
-import javax.swing.text.View;
-
 import com.example.myapplication.Calculation.Operator;
-
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class CalcPage extends AppCompatActivity {
+public class CalcPageActivity extends AppCompatActivity {
 	
 	//フィールド
 	private int leftValue;
@@ -26,7 +24,7 @@ public class CalcPage extends AppCompatActivity {
     Calculation calculation = new Calculation();
     
     //コンストラクタ
-    public CalcPage(){
+    public CalcPageActivity(){
     //メインページで選択された演算方法を取得してthis.opeに代入する
     this.ope = main.getOpe();
     //メインページで入力された数値を引数で渡してArrayList型配列を取得する

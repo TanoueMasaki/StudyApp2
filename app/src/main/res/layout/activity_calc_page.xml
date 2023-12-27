@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CalcPage">
+    tools:context=".CalcPageActivity">
 
     <Button
         android:id="@+id/buttonFinish"
@@ -18,7 +18,7 @@
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/hantei1"
+        android:id="@+id/judgment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="判定する"
@@ -30,11 +30,9 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="365dp"
+        android:layout_width="wrap_content"
         android:layout_height="162dp"
-        android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,13 +43,13 @@
 
         <TextView
             android:id="@+id/leftValue"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:textSize="96sp" />
 
         <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
+            android:id="@+id/ope"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:text="+"
@@ -59,7 +57,7 @@
 
         <TextView
             android:id="@+id/rightValue"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:inputType="number"
             android:textSize="96sp" />
@@ -69,22 +67,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:inputType="number"
             android:text="="
             android:textSize="96sp" />
 
         <TextView
             android:id="@+id/answer"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text=""
-            android:textSize="96sp"/>
+            android:textSize="96sp" />
 
     </LinearLayout>
 
+<!--○×表示用-->
     <TextView
-        android:id="@+id/judgment"
+        android:id="@+id/trueOrFalse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -92,5 +90,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:textSize="200sp"/>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

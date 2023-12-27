@@ -1,22 +1,24 @@
 package com.example.myapplication;
 
-import java.awt.Button;
-import java.awt.Color;
-
-import javax.swing.text.View;
-
-import com.example.myapplication.Calculation.Operator;
+import static com.example.myapplication.Calculation.Operator.addition;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.myapplication.Calculation.Operator;
 
 public class MainActivity extends AppCompatActivity {
     //フィールド定義
-    int initialVal = 0;
-    int finalVal = 0;
-    Operator ope;
+    private int initialVal = 0;
+    private int finalVal = 0;
+    private Operator ope;
 
     //セッター
     public void setInitialVal(int value){
@@ -44,13 +46,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //左スピナーを設定
+        String[] array = new String[100];
+        for(int i = 0;i < 100;i++){
+             array[i] = String.valueOf(i);
+        }
+        Spinner spinner = findViewById(R.id.spinner);
+        ArrayAdapter<String> adapter
+                = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, array);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
         //たし算ボタンが押されたら
         Button buAddition = findViewById(R.id.buAddition);
         buAddition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            	this.ope = addition;
-                buAddition.setBackgroundColor(Color.parseColor("#FF0000"));
+            	setOpe(addition);
+                buAddition.setBackgroundColor(Color.parseColor("#F441B9"));
             }
         });
         
@@ -63,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         buStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, CalcPage.class);
+                Intent intent = new Intent(MainActivity.this, CalcPageActivity.class);
                 startActivity(intent);
 
                 //initialValを取得してフィールドに代入
