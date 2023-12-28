@@ -1,18 +1,18 @@
 package com.example.myapplication;
 
-import static com.example.myapplication.Calculation.Operator.addition;
+import java.awt.Button;
+import java.awt.Color;
+
+import javax.swing.text.View;
+
+import com.example.myapplication.Calculation.Operator;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.myapplication.Calculation.Operator;
 
 public class MainActivity extends AppCompatActivity {
     //フィールド定義
@@ -58,19 +58,56 @@ public class MainActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
-        //たし算ボタンが押されたら
+        //演算子ボタンのインスタンス化
         Button buAddition = findViewById(R.id.buAddition);
+        Button buSubtraction = findViewById(R.id.buSubtraction);
+        Button buMultiplication = findViewById(R.id.buMultiplication);
+        Button buDivision = findViewById(R.id.buDivision);
+        //足し算ボタンが押されたら
         buAddition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
             	setOpe(addition);
                 buAddition.setBackgroundColor(Color.parseColor("#F441B9"));
+                buSubtraction.setBackgroundColor(Color.parseColor("#A37DFD"));
+                buMultiplication.setBackgroundColor(Color.parseColor("#A37DFD"));
+                buDivision.setBackgroundColor(Color.parseColor("#A37DFD"));
             }
         });
         
         //ひき算ボタンが押されたら
+        buSubtraction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            	setOpe(addition);
+                buAddition.setBackgroundColor(Color.parseColor("#A37DFD"));
+                buSubtraction.setBackgroundColor(Color.parseColor("#F441B9"));
+                buMultiplication.setBackgroundColor(Color.parseColor("#A37DFD"));
+                buDivision.setBackgroundColor(Color.parseColor("#A37DFD"));
+            }
+        });
         //かけ算ボタンが押されたら
+        buMultiplication.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            	setOpe(addition);
+                buAddition.setBackgroundColor(Color.parseColor("#A37DFD"));
+                buSubtraction.setBackgroundColor(Color.parseColor("#A37DFD"));
+                buMultiplication.setBackgroundColor(Color.parseColor("#F441B9"));
+                buDivision.setBackgroundColor(Color.parseColor("#A37DFD"));
+            }
+        });
         //わり算ボタンが押されたら
+        buDivision.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            	setOpe(addition);
+                buAddition.setBackgroundColor(Color.parseColor("#A37DFD"));
+                buSubtraction.setBackgroundColor(Color.parseColor("#A37DFD"));
+                buMultiplication.setBackgroundColor(Color.parseColor("#A37DFD"));
+                buDivision.setBackgroundColor(Color.parseColor("#F441B9"));
+            }
+        });
 
         //スタートボタンが押されたら
         Button buStart = findViewById(R.id.buStart);
